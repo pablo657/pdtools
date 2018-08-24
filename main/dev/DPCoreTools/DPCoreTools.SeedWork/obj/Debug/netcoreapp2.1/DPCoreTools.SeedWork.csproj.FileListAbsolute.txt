@@ -1,0 +1,9 @@
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DPCoreTools.SeedWork\bin\Debug\netcoreapp2.1\DPCoreTools.SeedWork.deps.json
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DPCoreTools.SeedWork\bin\Debug\netcoreapp2.1\DPCoreTools.SeedWork.dll
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DPCoreTools.SeedWork\bin\Debug\netcoreapp2.1\DPCoreTools.SeedWork.pdb
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DPCoreTools.SeedWork\obj\Debug\netcoreapp2.1\DPCoreTools.SeedWork.csprojAssemblyReference.cache
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DPCoreTools.SeedWork\obj\Debug\netcoreapp2.1\DPCoreTools.SeedWork.csproj.CoreCompileInputs.cache
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DPCoreTools.SeedWork\obj\Debug\netcoreapp2.1\DPCoreTools.SeedWork.AssemblyInfoInputs.cache
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DPCoreTools.SeedWork\obj\Debug\netcoreapp2.1\DPCoreTools.SeedWork.AssemblyInfo.cs
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DPCoreTools.SeedWork\obj\Debug\netcoreapp2.1\DPCoreTools.SeedWork.dll
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DPCoreTools.SeedWork\obj\Debug\netcoreapp2.1\DPCoreTools.SeedWork.pdb

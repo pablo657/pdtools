@@ -1,0 +1,165 @@
+PING:
+
+<Ping>
+    <RemoteHost>?</RemoteHost>
+    <!-- Optional: -->
+    <useIPv>?</useIPv>
+</Ping>
+
+ej.
+
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <dp:request domain="PRE_DESA" xmlns:dp="http://www.datapower.com/schemas/management">
+            <dp:do-action>
+                <Ping>
+                    <RemoteHost>10.95.182.84</RemoteHost>
+                </Ping>
+            </dp:do-action>
+        </dp:request>
+    </env:Body>
+</env:Envelope>
+
+_______________________________________________________________________________________
+TCP Connection Test:
+
+<TCPConnectionTest>
+    <RemoteHost>?</RemoteHost>
+    <RemotePort>?</RemotePort>
+    <!-- Optional: -->
+    <useIPv>?</useIPv>
+</TCPConnectionTest>
+
+_______________________________________________________________________________________
+Object Status:
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+    <soap:Header/>
+    <soap:Body>
+        <dp:request domain="PRE_DESA" xmlns:dp="http://www.datapower.com/schemas/management">
+            <dp:get-status class="ObjectStatus" object-class="MultiProtocolGateway" object-name="API-MDW-ConsultarWhatsappActivo-MPGW"/>
+        </dp:request>
+    </soap:Body>
+</soap:Envelope>
+_______________________________________________________________________________________
+Obtener dominios:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Body>
+Chapter 2. Appliance Management Protocol (AMP) 11
+        <dp:GetDomainListRequest
+xmlns:dp="http://www.datapower.com/schemas/appliance/management/1.0"/>
+    </soapenv:Body>
+</soapenv:Envelope>
+_______________________________________________________________________________________
+
+Config de un MPGW
+
+<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <dp:request domain="DomainName" xmlns:dp="http://www.datapower.com/schemas/management">
+            <dp:get-config class="MultiProtocolGateway" name="your_mpgw_name"/>
+        </dp:request>
+    </env:Body>
+</env:Envelope>
+_______________________________________________________________________________________
+Monitoring:
+
+ej. CPU 
+
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <dp:request domain="default"
+xmlns:dp="http://www.datapower.com/schemas/management">
+            <dp:get-status class="CPUUsage"/>
+        </dp:request>
+    </env:Body>
+</env:Envelope>
+
+Buscar:
+
+CPU/Memoria/Red/Transacciones/File System 
+
+Memoria: MemoryStatus
+
+Red: 
+Transacciones:
+File System:
+
+
+
+
+
+
+Ver anexo debajo con parametros que se pueden monitorear
+
+_______________________________________________________________________________________
+Cache:
+8)  Obtener listado de StyleSheet Cache de un ambiente/host/dominio. - DP lo identifica como XMLManager
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_______________________________________________________________________________________
+
+
+ANEXO: Monitoring parametros:
+
+Values of the class attribute
+By changing the class attribute, you can monitor the following values or status of the
+DataPower device:
+A ActiveUsers, ARPStatus
+C ConnectionsAccepted, CPUUsage, CryptoEngineStatus
+D DateTimeStatus, DNSCacheHostStatus, DNSNameServerStatus,
+DNSSearchDomainStatus, DNSStaticHostStatus, DocumentCachingSummary,
+DocumentStatus, DocumentStatusSimpleIndex, DomainStatus, DynamicQueueManager
+E EnvironmentalFanSensors, EnvironmentalSensors, EthernetInterfaceStatus
+F FilePollerStatus, FilesystemStatus, FirmwareStatus, FirmwareVersion
+H HSMKeyStatus, HTTPConnections, HTTPConnectionsCreated,
+HTTPConnectionsDestroyed, HTTPConnectionsOffered, HTTPConnectionsRequested,
+HTTPConnectionsReturned, HTTPConnectionsReused, HTTPMeanTransactionTime,
+HTTPTransactions
+L LibraryVersion, LicenseStatus, LoadBalancerStatus, LogTargetStatus
+M MemoryStatus, MessageCountFilters, MessageCounts, MessageDurationFilters,
+MessageDurations, MessageSources, MQQMstatus, MQStatus
+N NFSMountStatus, NTPRefreshStatus
+O ObjectStatus
+P PortStatus
+R ReceiveKbpsThroughput, ReceivePacketThroughput, RoutingStatus
+S ServicesStatus, SLMPeeringStatus, SLMSummaryStatus, SNMPStatus,
+SSHTrustedHostStatus, StandbyStatus, StylesheetCachingSummary,
+StylesheetExecutions, StylesheetExecutionsSimpleIndex,
+StylesheetMeanExecutionTime, StylesheetMeanExecutionTimeSimpleIndex,
+StylesheetProfiles, StylesheetProfilesSimpleIndex, StylesheetStatus,
+StylesheetStatusSimpleIndex, SystemUsage
+T TCPSummary, TCPTable, TibcoEMSStatus, TransmitKbpsThroughput,
+TransmitPacketThroughput
+U UDDISubscriptionKeyStatusSimpleIndex, UDDISubscriptionServiceStatusSimpleIndex,
+UDDISubscriptionStatusSimpleIndex
+V Version
+W WebAppFwAccepted, WebAppFwRejected, WebSphereJMSStatus, WSMAgentSpoolers,
+WSMAgentStatus, WSOperationMetrics, WSOperationsStatus,
+WSRRSubscriptionServiceStatus, WSRRSubscriptionStatus, WSWSDLStatus,
+WSWSDLStatusSimpleIndex
+Some of the values show the output only if statistics are enabled on your DataPower device.
+To enable statistics from the WebGUI, select:
+Objects ? System ? Statistic settings

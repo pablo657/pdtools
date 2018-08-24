@@ -1,0 +1,11 @@
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+<env:Body>
+<dp:request domain="PRE_DESA" xmlns:dp="http://www.datapower.com/schemas/management">
+<dp:do-action>
+<Ping>
+<RemoteHost>10.95.182.84</RemoteHost>
+</Ping>
+</dp:do-action>
+</dp:request>
+</env:Body>
+</env:Envelope>

@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.telecom.instvascore</groupId>
+  <artifactId>wspotydy</artifactId>
+  <packaging>jar</packaging>
+  <version>3</version>
+  <name>WFSpotify</name>
+  <url>http://maven.apache.org</url>
+ <build>
+ <plugins>
+	 <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-deploy-plugin</artifactId>
+      <version>2.7</version>
+    </plugin>
+	<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<descriptors>
+						<descriptor>Target\APIS-$(VERSION).zip</descriptor>
+					</descriptors>
+					<tarLongFileMode>posix</tarLongFileMode>
+				</configuration>
+			</plugin>
+	
+	</plugins>
+	</build>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+   <distributionManagement>
+      <repository>
+        <id>autogestion-apis</id>
+        <name>autogestion-apis</name>
+        <url>http://192.168.3.54:8081/artifactory/autogestion-apis</url>
+      </repository>
+    </distributionManagement>
+</project>

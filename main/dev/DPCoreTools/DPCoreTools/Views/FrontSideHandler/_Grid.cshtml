@@ -1,0 +1,90 @@
+﻿@model List<DPCoreTools.SeedWork.Models.FrontSideHandler>
+<style>
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.no-data {
+		color: rgba(128,128,128,1);
+		font-size: .9em;
+	}
+</style>
+<div style="width: 100%; position: relative;">
+	@if (Model.Any())
+	{
+		<div style="position: relative; height: 2.5em; font-size: .9em;">
+			<span style="position: absolute; right: 1em; top: 5px;">
+				<small>Total : <strong>@Model.Count</strong></small>
+			</span>
+		</div>
+		<div class="table-responsive-md">
+			<table class="DPCore-table">
+				<thead>
+					<tr>
+						<th>
+							Name
+						</th>
+						<th>
+							Protocol
+						</th>
+						<th>
+							Op-State
+						</th>
+						<th>
+							Local IP address
+						</th>
+						<th>
+							Port
+						</th>
+						<th>
+							Actions
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.Name)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Class)
+							</td>
+							<td style="position: relative; text-align: center;">
+								@if (item.OpState.Status.ToLower() == "up")
+								{
+									<i class="fa fa-arrow-circle-up" style="color: green"></i>
+								}
+								else if (item.OpState.Status.ToLower() == "down")
+								{
+									<i class="fa fa-arrow-circle-down" style="color:red"></i>
+								}
+								else
+								{
+									<i class="fa fa-info-circle" style="color:yellow">No available</i>
+								}
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.LocalAddress)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.LocalPort)
+							</td>
+
+							<td class="td-action" style="text-align:initial;">
+								<a asp-action="Details" asp-controller="FrontSideHandler" asp-route-id="@item.Name" asp-route-Environment="@item.Environment" asp-route-Host="@item.Host" asp-route-Domain="@item.Domain" asp-route-Protocol="@item.Class"><i class="fas fa-search"></i></a>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	}
+	else
+	{
+		<p class="no-data" style="margin: 0; padding: 1em;">No existen registros en el dominio seleccionado</p>
+	}
+</div>

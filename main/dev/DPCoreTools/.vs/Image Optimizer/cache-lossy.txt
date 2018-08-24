@@ -1,0 +1,2 @@
+E:\Works\ATOS\Projects\DPCoreTools\DPCoreTools\wwwroot\images\gif\DataPower_IDG.PNG|37933
+E:\Works\ATOS\Projects\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DPCoreTools\wwwroot\images\DataPower_IDG.PNG|37933

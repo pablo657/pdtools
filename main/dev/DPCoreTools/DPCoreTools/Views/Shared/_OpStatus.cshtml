@@ -1,0 +1,55 @@
+﻿@using DPCoreTools.SeedWork.Models
+@model OpStatus
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<b>Status:</b>
+		</div>
+		<div class="form-group">
+			@Html.DisplayFor(model => model.Status)
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			<b>Admin State:</b>
+		</div>
+		<div class="form-group">
+			@Html.DisplayFor(model => model.AdminState)
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<b>Event Code:</b>
+		</div>
+		<div class="form-group">
+			@Html.DisplayFor(model => model.EventCode)
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			<b>Error Code:</b>
+		</div>
+		<div class="form-group">
+			@Html.DisplayFor(model => model.ErrorCode)
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<b>Config State:</b> 
+			@if(Model.ConfigState.ToLower() != "saved")
+			{ 
+				<i class="fa fa-exclamation-triangle" style="color:goldenrod"></i> 
+			}
+		</div>
+		<div class="form-group">
+			@Html.DisplayFor(model => model.ConfigState)
+		</div>
+	</div>
+	<div class="col-md-4">
+	</div>
+</div>

@@ -1,0 +1,12 @@
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DpCoreTools.Service\bin\Debug\netcoreapp2.1\DpCoreTools.Service.Main.deps.json
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DpCoreTools.Service\bin\Debug\netcoreapp2.1\DpCoreTools.Service.Main.dll
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DpCoreTools.Service\bin\Debug\netcoreapp2.1\DpCoreTools.Service.Main.pdb
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DpCoreTools.Service\bin\Debug\netcoreapp2.1\DPCoreTools.SeedWork.dll
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DpCoreTools.Service\bin\Debug\netcoreapp2.1\DPCoreTools.SeedWork.pdb
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DpCoreTools.Service\obj\Debug\netcoreapp2.1\DpCoreTools.Service.Main.csprojAssemblyReference.cache
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DpCoreTools.Service\obj\Debug\netcoreapp2.1\DpCoreTools.Service.Main.csproj.CoreCompileInputs.cache
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DpCoreTools.Service\obj\Debug\netcoreapp2.1\DpCoreTools.Service.Main.AssemblyInfoInputs.cache
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DpCoreTools.Service\obj\Debug\netcoreapp2.1\DpCoreTools.Service.Main.AssemblyInfo.cs
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DpCoreTools.Service\obj\Debug\netcoreapp2.1\DpCoreTools.Service.Main.csproj.CopyComplete
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DpCoreTools.Service\obj\Debug\netcoreapp2.1\DpCoreTools.Service.Main.dll
+C:\PABLO\VisualStudio2017\dtp_dpcoretools-apl_datapower\main\dev\DPCoreTools\DpCoreTools.Service\obj\Debug\netcoreapp2.1\DpCoreTools.Service.Main.pdb

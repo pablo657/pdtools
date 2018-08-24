@@ -1,0 +1,13 @@
+﻿@using DPCoreTools.UI.Extensions
+<div class="row">
+	<div class="col-md-6">
+		<label class="control-label">Ambiente</label>
+		@Controles.RenderDropDown(Html, "drpEnvironments", "Environment", ViewBag.Environments,
+			new Dictionary<string, object> { { "class", "form-control" }, { "data-validation-name", "Environment" }})
+	</div>
+	<div class="col-md-6">
+		<label class="control-label">Host</label>
+		@Controles.RenderDropDown(Html, "drpHosts", "Host", ViewBag.Hosts,
+			new Dictionary<string, object> { { "class", "form-control" }, { "data-validation-name", "Host" } })
+	</div>
+</div>

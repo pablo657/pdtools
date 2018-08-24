@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DPCoreTools.Migration": {
+      "commandName": "Project",
+      "commandLineArgs": "C U DESARROLLO"
+    }
+  }
+}

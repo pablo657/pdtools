@@ -1,0 +1,112 @@
+﻿.buttons-right {
+	text-align: right;
+	padding: .25em;
+	background: rgba(5,200,255,.25);
+}
+
+.buttons-right-transparent {
+	text-align: right;
+	padding: .25em;
+	background: transparent;
+}
+
+.green {
+	color: rgba(40, 170, 70, 1);
+}
+
+	.green:hover {
+		background: rgba(40, 170, 70, 1);
+		color: white;
+	}
+
+.gray {
+	color: rgba(128,128,128,.75);
+}
+
+	.gray:hover {
+		background: rgba(128,128,128,.75);
+		color: white;
+	}
+
+#wrapper {
+	padding-left: 0;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+	#wrapper.toggled {
+		padding-left: 250px;
+	}
+
+#sidebar-wrapper {
+	z-index: 1000;
+	position: fixed;
+	left: 250px;
+	width: 0;
+	height: 100%;
+	margin-left: -250px;
+	overflow-y: auto;
+	background: #000;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+	width: 250px;
+}
+
+#page-content-wrapper {
+	width: 100%;
+	position: absolute;
+	padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+	position: absolute;
+	margin-right: -250px;
+}
+
+.modal-Ajax
+{
+	position: fixed;
+	z-index: 999;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background-color: Black;
+	filter: alpha(opacity=60);
+	opacity: 0.6;
+	-moz-opacity: 0.8;
+}
+
+.center
+{
+	z-index: 1000;
+	margin: 300px auto;
+	padding: 10px;
+	width: 230px;
+	background-color: White;
+	border-radius: 10px;
+	filter: alpha(opacity=100);
+	opacity: 1;
+	-moz-opacity: 1;
+}
+
+.center img
+{
+	height: 200px;
+	width: 200px;
+}
+
+.gc-footer {
+	width: 60px;
+	height: 60px;
+}
+

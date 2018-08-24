@@ -1,0 +1,777 @@
+PING:
+
+<Ping>
+    <RemoteHost>?</RemoteHost>
+    <!-- Optional: -->
+    <useIPv>?</useIPv>
+</Ping>
+
+ej.
+
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <dp:request domain="PRE_DESA" xmlns:dp="http://www.datapower.com/schemas/management">
+            <dp:do-action>
+                <Ping>
+                    <RemoteHost>10.95.182.84</RemoteHost>
+                </Ping>
+            </dp:do-action>
+        </dp:request>
+    </env:Body>
+</env:Envelope>
+
+_______________________________________________________________________________________
+TCP Connection Test:
+
+<TCPConnectionTest>
+    <RemoteHost>?</RemoteHost>
+    <RemotePort>?</RemotePort>
+    <!-- Optional: -->
+    <useIPv>?</useIPv>
+</TCPConnectionTest>
+
+_______________________________________________________________________________________
+Object Status:
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+    <soap:Header/>
+    <soap:Body>
+        <dp:request domain="PRE_DESA" xmlns:dp="http://www.datapower.com/schemas/management">
+            <dp:get-status class="ObjectStatus" object-class="MultiProtocolGateway" object-name="API-MDW-ConsultarWhatsappActivo-MPGW"/>
+        </dp:request>
+    </soap:Body>
+</soap:Envelope>
+_______________________________________________________________________________________
+Obtener dominios:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Body>
+        <dp:GetDomainListRequest xmlns:dp="http://www.datapower.com/schemas/appliance/management/1.0"/>
+    </soapenv:Body>
+</soapenv:Envelope>
+
+
+_______________________________________________________________________________________
+DomainsMemoryStatus:
+
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <dp:request domain="default" xmlns:dp="http://www.datapower.com/schemas/management">
+            <dp:get-status class="DomainsMemoryStatus"/>
+        </dp:request>
+    </env:Body>
+</env:Envelope>
+_______________________________________________________________________________________
+
+Config de un MPGW
+
+<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <dp:request domain="DomainName" xmlns:dp="http://www.datapower.com/schemas/management">
+            <dp:get-config class="MultiProtocolGateway" name="your_mpgw_name"/>
+        </dp:request>
+    </env:Body>
+</env:Envelope>
+_______________________________________________________________________________________
+Monitoring:
+
+ej. CPU 
+
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <dp:request domain="default"
+xmlns:dp="http://www.datapower.com/schemas/management">
+            <dp:get-status class="CPUUsage"/>
+        </dp:request>
+    </env:Body>
+</env:Envelope>
+
+Utiles: 
+
+CPU: CPUUsage
+Memoria: MemoryStatus
+Red: NetworkInterfaceStatus
+Transacciones:
+File System: FilesystemStatus
+
+Otros:
+SystemUsage2Table
+HTTPTransactions
+HTTPTransactions2
+
+
+
+
+Ver anexo debajo con parametros que se pueden monitorear
+
+_______________________________________________________________________________________
+Cache:
+8)  Obtener listado de StyleSheet Cache de un ambiente/host/dominio. - DP lo identifica como XMLManager
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_______________________________________________________________________________________
+
+
+ANEXO: Monitoring parametros:
+
+Values of the class attribute
+By changing the class attribute, you can monitor the following values or status of the
+DataPower device:
+A ActiveUsers, ARPStatus
+C ConnectionsAccepted, CPUUsage, CryptoEngineStatus
+D DateTimeStatus, DNSCacheHostStatus, DNSNameServerStatus,
+DNSSearchDomainStatus, DNSStaticHostStatus, DocumentCachingSummary,
+DocumentStatus, DocumentStatusSimpleIndex, DomainStatus, DynamicQueueManager
+E EnvironmentalFanSensors, EnvironmentalSensors, EthernetInterfaceStatus
+F FilePollerStatus, FilesystemStatus, FirmwareStatus, FirmwareVersion
+H HSMKeyStatus, HTTPConnections, HTTPConnectionsCreated,
+HTTPConnectionsDestroyed, HTTPConnectionsOffered, HTTPConnectionsRequested,
+HTTPConnectionsReturned, HTTPConnectionsReused, HTTPMeanTransactionTime,
+HTTPTransactions
+L LibraryVersion, LicenseStatus, LoadBalancerStatus, LogTargetStatus
+M MemoryStatus, MessageCountFilters, MessageCounts, MessageDurationFilters,
+MessageDurations, MessageSources, MQQMstatus, MQStatus
+N NFSMountStatus, NTPRefreshStatus
+O ObjectStatus
+P PortStatus
+R ReceiveKbpsThroughput, ReceivePacketThroughput, RoutingStatus
+S ServicesStatus, SLMPeeringStatus, SLMSummaryStatus, SNMPStatus,
+SSHTrustedHostStatus, StandbyStatus, StylesheetCachingSummary,
+StylesheetExecutions, StylesheetExecutionsSimpleIndex,
+StylesheetMeanExecutionTime, StylesheetMeanExecutionTimeSimpleIndex,
+StylesheetProfiles, StylesheetProfilesSimpleIndex, StylesheetStatus,
+StylesheetStatusSimpleIndex, SystemUsage
+T TCPSummary, TCPTable, TibcoEMSStatus, TransmitKbpsThroughput,
+TransmitPacketThroughput
+U UDDISubscriptionKeyStatusSimpleIndex, UDDISubscriptionServiceStatusSimpleIndex,
+UDDISubscriptionStatusSimpleIndex
+V Version
+W WebAppFwAccepted, WebAppFwRejected, WebSphereJMSStatus, WSMAgentSpoolers,
+WSMAgentStatus, WSOperationMetrics, WSOperationsStatus,
+WSRRSubscriptionServiceStatus, WSRRSubscriptionStatus, WSWSDLStatus,
+WSWSDLStatusSimpleIndex
+Some of the values show the output only if statistics are enabled on your DataPower device.
+To enable statistics from the WebGUI, select:
+Objects ? System ? Statistic settings
+
+----------------
+Otros:
+
+"http://www.datapower.com/schemas/management" xmlns:xsd=
+"http://www.w3.org/2001/XMLSchema" name=
+"ConfigEnum"> <xsd:restriction base=
+"xsd:string"> <xsd:enumeration value=
+"AAAPolicy"/> <xsd:enumeration value=
+"Domain"/> <xsd:enumeration value=
+"LDAPSearchParameters"/> <xsd:enumeration value=
+"ProcessingMetadata"/> <xsd:enumeration value=
+"RADIUSSettings"/> <xsd:enumeration value=
+"RBMSettings"/> <xsd:enumeration value=
+"SAMLAttributes"/> <xsd:enumeration value=
+"SOAPHeaderDisposition"/> <xsd:enumeration value=
+"TAM"/> <xsd:enumeration value=
+"TFIMEndpoint"/> <xsd:enumeration value=
+"XACMLPDP"/> <xsd:enumeration value=
+"AccessControlList"/> <xsd:enumeration value=
+"AppSecurityPolicy"/> <xsd:enumeration value=
+"CompactFlash"/> <xsd:enumeration value=
+"CompileOptionsPolicy"/> <xsd:enumeration value=
+"ConfigDeploymentPolicy"/> <xsd:enumeration value=
+"ConformancePolicy"/> <xsd:enumeration value=
+"CertMonitor"/> <xsd:enumeration value=
+"CRLFetch"/> <xsd:enumeration value=
+"CryptoCertificate"/> <xsd:enumeration value=
+"CryptoFWCred"/> <xsd:enumeration value=
+"CryptoIdentCred"/> <xsd:enumeration value=
+"CryptoKerberosKDC"/> <xsd:enumeration value=
+"CryptoKerberosKeytab"/> <xsd:enumeration value=
+"CryptoKey"/> <xsd:enumeration value=
+"CryptoProfile"/> <xsd:enumeration value=
+"CryptoSSKey"/> <xsd:enumeration value=
+"CryptoValCred"/> <xsd:enumeration value=
+"SSHClientProfile"/> <xsd:enumeration value=
+"SSLProxyProfile"/> <xsd:enumeration value=
+"ErrorReportSettings"/> <xsd:enumeration value=
+"SystemSettings"/> <xsd:enumeration value=
+"TimeSettings"/> <xsd:enumeration value=
+"SchemaExceptionMap"/> <xsd:enumeration value=
+"DocumentCryptoMap"/> <xsd:enumeration value=
+"XPathRoutingMap"/> <xsd:enumeration value=
+"LogTarget"/> <xsd:enumeration value=
+"FormsLoginPolicy"/> <xsd:enumeration value=
+"FTPQuoteCommands"/> <xsd:enumeration value=
+"MultiProtocolGateway"/> <xsd:enumeration value=
+"WSGateway"/> <xsd:enumeration value=
+"HTTPInputConversionMap"/> <xsd:enumeration value=
+"HTTPUserAgent"/> <xsd:enumeration value=
+"ImportPackage"/> <xsd:enumeration value=
+"IMSConnect"/> <xsd:enumeration value=
+"IncludeConfig"/> <xsd:enumeration value=
+"EthernetInterface"/> <xsd:enumeration value=
+"VLANInterface"/> <xsd:enumeration value=
+"IScsiChapConfig"/> <xsd:enumeration value=
+"IScsiHBAConfig"/> <xsd:enumeration value=
+"IScsiInitiatorConfig"/> <xsd:enumeration value=
+"IScsiTargetConfig"/> <xsd:enumeration value=
+"IScsiVolumeConfig"/> <xsd:enumeration value=
+"TibcoEMSServer"/> <xsd:enumeration value=
+"WebSphereJMSServer"/> <xsd:enumeration value=
+"LoadBalancerGroup"/> <xsd:enumeration value=
+"LogLabel"/> <xsd:enumeration value=
+"Matching"/> <xsd:enumeration value=
+"FilterAction"/> <xsd:enumeration value=
+"MessageMatching"/> <xsd:enumeration value=
+"CountMonitor"/> <xsd:enumeration value=
+"DurationMonitor"/> <xsd:enumeration value=
+"MessageType"/> <xsd:enumeration value=
+"MQGW"/> <xsd:enumeration value=
+"MQhost"/> <xsd:enumeration value=
+"MQproxy"/> <xsd:enumeration value=
+"MQQM"/> <xsd:enumeration value=
+"MQQMGroup"/> <xsd:enumeration value=
+"MTOMPolicy"/> <xsd:enumeration value=
+"NameValueProfile"/> <xsd:enumeration value=
+"DNSNameService"/> <xsd:enumeration value=
+"HostAlias"/> <xsd:enumeration value=
+"NetworkSettings"/> <xsd:enumeration value=
+"NTPService"/> <xsd:enumeration value=
+"NFSClientSettings"/> <xsd:enumeration value=
+"NFSDynamicMounts"/> <xsd:enumeration value=
+"NFSStaticMount"/> <xsd:enumeration value=
+"PeerGroup"/> <xsd:enumeration value=
+"PolicyAttachments"/> <xsd:enumeration value=
+"PolicyParameters"/> <xsd:enumeration value=
+"RaidVolume"/> <xsd:enumeration value=
+"SecureCloudConnector"/> <xsd:enumeration value=
+"MgmtInterface"/> <xsd:enumeration value=
+"SSHService"/> <xsd:enumeration value=
+"TelnetService"/> <xsd:enumeration value=
+"WebGUI"/> <xsd:enumeration value=
+"XMLFirewallService"/> <xsd:enumeration value=
+"XSLProxyService"/> <xsd:enumeration value=
+"HTTPService"/> <xsd:enumeration value=
+"SSLProxyService"/> <xsd:enumeration value=
+"TCPProxyService"/> <xsd:enumeration value=
+"XSLCoprocService"/> <xsd:enumeration value=
+"ShellAlias"/> <xsd:enumeration value=
+"SimpleCountMonitor"/> <xsd:enumeration value=
+"SLMAction"/> <xsd:enumeration value=
+"SLMCredClass"/> <xsd:enumeration value=
+"SLMPolicy"/> <xsd:enumeration value=
+"SLMRsrcClass"/> <xsd:enumeration value=
+"SLMSchedule"/> <xsd:enumeration value=
+"SNMPSettings"/> <xsd:enumeration value=
+"FTPFilePollerSourceProtocolHandler"/> <xsd:enumeration value=
+"NFSFilePollerSourceProtocolHandler"/> <xsd:enumeration value=
+"SFTPFilePollerSourceProtocolHandler"/> <xsd:enumeration value=
+"FTPServerSourceProtocolHandler"/> <xsd:enumeration value=
+"HTTPSourceProtocolHandler"/> <xsd:enumeration value=
+"HTTPSSourceProtocolHandler"/> <xsd:enumeration value=
+"IMSConnectSourceProtocolHandler"/> <xsd:enumeration value=
+"TibcoEMSSourceProtocolHandler"/> <xsd:enumeration value=
+"WebSphereJMSSourceProtocolHandler"/> <xsd:enumeration value=
+"MQSourceProtocolHandler"/> <xsd:enumeration value=
+"SSHServerSourceProtocolHandler"/> <xsd:enumeration value=
+"StatelessTCPSourceProtocolHandler"/> <xsd:enumeration value=
+"XTCProtocolHandler"/> <xsd:enumeration value=
+"SQLDataSource"/> <xsd:enumeration value=
+"Statistics"/> <xsd:enumeration value=
+"StylePolicy"/> <xsd:enumeration value=
+"StylePolicyAction"/> <xsd:enumeration value=
+"StylePolicyRule"/> <xsd:enumeration value=
+"WSStylePolicyRule"/> <xsd:enumeration value=
+"Throttler"/> <xsd:enumeration value=
+"UDDIRegistry"/> <xsd:enumeration value=
+"URLMap"/> <xsd:enumeration value=
+"URLRefreshPolicy"/> <xsd:enumeration value=
+"URLRewritePolicy"/> <xsd:enumeration value=
+"User"/> <xsd:enumeration value=
+"UserGroup"/> <xsd:enumeration value=
+"WCCService"/> <xsd:enumeration value=
+"WebAppErrorHandlingPolicy"/> <xsd:enumeration value=
+"WebAppFW"/> <xsd:enumeration value=
+"WebAppRequest"/> <xsd:enumeration value=
+"WebAppResponse"/> <xsd:enumeration value=
+"WebAppSessionPolicy"/> <xsd:enumeration value=
+"WebServiceMonitor"/> <xsd:enumeration value=
+"WebServicesAgent"/> <xsd:enumeration value=
+"UDDISubscription"/> <xsd:enumeration value=
+"WSRRSavedSearchSubscription"/> <xsd:enumeration value=
+"WSRRSubscription"/> <xsd:enumeration value=
+"WSEndpointRewritePolicy"/> <xsd:enumeration value=
+"WSRRServer"/> <xsd:enumeration value=
+"WSStylePolicy"/> <xsd:enumeration value=
+"XMLManager"/> <xsd:enumeration value=
+"xmltrace"/> <xsd:enumeration value=
+"ZHybridTargetControlService"/> <xsd:enumeration value=
+"ZosNSSClient"/> </xsd:restriction> </xsd:simpleType> ------------------------------------------------------------------------------- <xsd:simpleType xmlns:tns=
+"http://www.datapower.com/schemas/management" xmlns:xsd=
+"http://www.w3.org/2001/XMLSchema" name=
+"ModifyEnum"> <xsd:restriction base=
+"xsd:string"> <xsd:enumeration value=
+"AAAPolicy"/> <xsd:enumeration value=
+"Domain"/> <xsd:enumeration value=
+"LDAPSearchParameters"/> <xsd:enumeration value=
+"ProcessingMetadata"/> <xsd:enumeration value=
+"RADIUSSettings"/> <xsd:enumeration value=
+"RBMSettings"/> <xsd:enumeration value=
+"SAMLAttributes"/> <xsd:enumeration value=
+"SOAPHeaderDisposition"/> <xsd:enumeration value=
+"TAM"/> <xsd:enumeration value=
+"TFIMEndpoint"/> <xsd:enumeration value=
+"XACMLPDP"/> <xsd:enumeration value=
+"AccessControlList"/> <xsd:enumeration value=
+"AppSecurityPolicy"/> <xsd:enumeration value=
+"CompactFlash"/> <xsd:enumeration value=
+"CompileOptionsPolicy"/> <xsd:enumeration value=
+"ConfigDeploymentPolicy"/> <xsd:enumeration value=
+"ConformancePolicy"/> <xsd:enumeration value=
+"CertMonitor"/> <xsd:enumeration value=
+"CRLFetch"/> <xsd:enumeration value=
+"CryptoCertificate"/> <xsd:enumeration value=
+"CryptoFWCred"/> <xsd:enumeration value=
+"CryptoIdentCred"/> <xsd:enumeration value=
+"CryptoKerberosKDC"/> <xsd:enumeration value=
+"CryptoKerberosKeytab"/> <xsd:enumeration value=
+"CryptoKey"/> <xsd:enumeration value=
+"CryptoProfile"/> <xsd:enumeration value=
+"CryptoSSKey"/> <xsd:enumeration value=
+"CryptoValCred"/> <xsd:enumeration value=
+"SSHClientProfile"/> <xsd:enumeration value=
+"SSLProxyProfile"/> <xsd:enumeration value=
+"ErrorReportSettings"/> <xsd:enumeration value=
+"SystemSettings"/> <xsd:enumeration value=
+"TimeSettings"/> <xsd:enumeration value=
+"SchemaExceptionMap"/> <xsd:enumeration value=
+"DocumentCryptoMap"/> <xsd:enumeration value=
+"XPathRoutingMap"/> <xsd:enumeration value=
+"LogTarget"/> <xsd:enumeration value=
+"FormsLoginPolicy"/> <xsd:enumeration value=
+"FTPQuoteCommands"/> <xsd:enumeration value=
+"MultiProtocolGateway"/> <xsd:enumeration value=
+"WSGateway"/> <xsd:enumeration value=
+"HTTPInputConversionMap"/> <xsd:enumeration value=
+"HTTPUserAgent"/> <xsd:enumeration value=
+"ImportPackage"/> <xsd:enumeration value=
+"IMSConnect"/> <xsd:enumeration value=
+"IncludeConfig"/> <xsd:enumeration value=
+"EthernetInterface"/> <xsd:enumeration value=
+"VLANInterface"/> <xsd:enumeration value=
+"IScsiChapConfig"/> <xsd:enumeration value=
+"IScsiHBAConfig"/> <xsd:enumeration value=
+"IScsiInitiatorConfig"/> <xsd:enumeration value=
+"IScsiTargetConfig"/> <xsd:enumeration value=
+"IScsiVolumeConfig"/> <xsd:enumeration value=
+"TibcoEMSServer"/> <xsd:enumeration value=
+"WebSphereJMSServer"/> <xsd:enumeration value=
+"LoadBalancerGroup"/> <xsd:enumeration value=
+"LogLabel"/> <xsd:enumeration value=
+"Matching"/> <xsd:enumeration value=
+"FilterAction"/> <xsd:enumeration value=
+"MessageMatching"/> <xsd:enumeration value=
+"CountMonitor"/> <xsd:enumeration value=
+"DurationMonitor"/> <xsd:enumeration value=
+"MessageType"/> <xsd:enumeration value=
+"MQGW"/> <xsd:enumeration value=
+"MQhost"/> <xsd:enumeration value=
+"MQproxy"/> <xsd:enumeration value=
+"MQQM"/> <xsd:enumeration value=
+"MQQMGroup"/> <xsd:enumeration value=
+"MTOMPolicy"/> <xsd:enumeration value=
+"NameValueProfile"/> <xsd:enumeration value=
+"DNSNameService"/> <xsd:enumeration value=
+"HostAlias"/> <xsd:enumeration value=
+"NetworkSettings"/> <xsd:enumeration value=
+"NTPService"/> <xsd:enumeration value=
+"NFSClientSettings"/> <xsd:enumeration value=
+"NFSDynamicMounts"/> <xsd:enumeration value=
+"NFSStaticMount"/> <xsd:enumeration value=
+"PeerGroup"/> <xsd:enumeration value=
+"PolicyAttachments"/> <xsd:enumeration value=
+"PolicyParameters"/> <xsd:enumeration value=
+"RaidVolume"/> <xsd:enumeration value=
+"SecureCloudConnector"/> <xsd:enumeration value=
+"MgmtInterface"/> <xsd:enumeration value=
+"SSHService"/> <xsd:enumeration value=
+"TelnetService"/> <xsd:enumeration value=
+"WebGUI"/> <xsd:enumeration value=
+"XMLFirewallService"/> <xsd:enumeration value=
+"XSLProxyService"/> <xsd:enumeration value=
+"HTTPService"/> <xsd:enumeration value=
+"SSLProxyService"/> <xsd:enumeration value=
+"TCPProxyService"/> <xsd:enumeration value=
+"XSLCoprocService"/> <xsd:enumeration value=
+"ShellAlias"/> <xsd:enumeration value=
+"SimpleCountMonitor"/> <xsd:enumeration value=
+"SLMAction"/> <xsd:enumeration value=
+"SLMCredClass"/> <xsd:enumeration value=
+"SLMPolicy"/> <xsd:enumeration value=
+"SLMRsrcClass"/> <xsd:enumeration value=
+"SLMSchedule"/> <xsd:enumeration value=
+"SNMPSettings"/> <xsd:enumeration value=
+"FTPFilePollerSourceProtocolHandler"/> <xsd:enumeration value=
+"NFSFilePollerSourceProtocolHandler"/> <xsd:enumeration value=
+"SFTPFilePollerSourceProtocolHandler"/> <xsd:enumeration value=
+"FTPServerSourceProtocolHandler"/> <xsd:enumeration value=
+"HTTPSourceProtocolHandler"/> <xsd:enumeration value=
+"HTTPSSourceProtocolHandler"/> <xsd:enumeration value=
+"IMSConnectSourceProtocolHandler"/> <xsd:enumeration value=
+"TibcoEMSSourceProtocolHandler"/> <xsd:enumeration value=
+"WebSphereJMSSourceProtocolHandler"/> <xsd:enumeration value=
+"MQSourceProtocolHandler"/> <xsd:enumeration value=
+"SSHServerSourceProtocolHandler"/> <xsd:enumeration value=
+"StatelessTCPSourceProtocolHandler"/> <xsd:enumeration value=
+"XTCProtocolHandler"/> <xsd:enumeration value=
+"SQLDataSource"/> <xsd:enumeration value=
+"Statistics"/> <xsd:enumeration value=
+"StylePolicy"/> <xsd:enumeration value=
+"StylePolicyAction"/> <xsd:enumeration value=
+"StylePolicyRule"/> <xsd:enumeration value=
+"WSStylePolicyRule"/> <xsd:enumeration value=
+"Throttler"/> <xsd:enumeration value=
+"UDDIRegistry"/> <xsd:enumeration value=
+"URLMap"/> <xsd:enumeration value=
+"URLRefreshPolicy"/> <xsd:enumeration value=
+"URLRewritePolicy"/> <xsd:enumeration value=
+"User"/> <xsd:enumeration value=
+"UserGroup"/> <xsd:enumeration value=
+"WCCService"/> <xsd:enumeration value=
+"WebAppErrorHandlingPolicy"/> <xsd:enumeration value=
+"WebAppFW"/> <xsd:enumeration value=
+"WebAppRequest"/> <xsd:enumeration value=
+"WebAppResponse"/> <xsd:enumeration value=
+"WebAppSessionPolicy"/> <xsd:enumeration value=
+"WebServiceMonitor"/> <xsd:enumeration value=
+"WebServicesAgent"/> <xsd:enumeration value=
+"UDDISubscription"/> <xsd:enumeration value=
+"WSRRSavedSearchSubscription"/> <xsd:enumeration value=
+"WSRRSubscription"/> <xsd:enumeration value=
+"WSEndpointRewritePolicy"/> <xsd:enumeration value=
+"WSRRServer"/> <xsd:enumeration value=
+"WSStylePolicy"/> <xsd:enumeration value=
+"XMLManager"/> <xsd:enumeration value=
+"xmltrace"/> <xsd:enumeration value=
+"ZHybridTargetControlService"/> <xsd:enumeration value=
+"ZosNSSClient"/> </xsd:restriction> </xsd:simpleType> ------------------------------------------------------------------------------- <xsd:simpleType xmlns:tns=
+"http://www.datapower.com/schemas/management" xmlns:xsd=
+"http://www.w3.org/2001/XMLSchema" name=
+"StatusEnum"> <xsd:restriction base=
+"xsd:string"> <xsd:enumeration value=
+"ActiveUsers"/> <xsd:enumeration value=
+"ARPStatus"/> <xsd:enumeration value=
+"AS1PollerSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"AS2SourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"AS3SourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"B2BGatewaySummary"/> <xsd:enumeration value=
+"Battery"/> <xsd:enumeration value=
+"ConnectionsAccepted"/> <xsd:enumeration value=
+"CPUUsage"/> <xsd:enumeration value=
+"CryptoEngineStatus"/> <xsd:enumeration value=
+"DateTimeStatus"/> <xsd:enumeration value=
+"DNSCacheHostStatus"/> <xsd:enumeration value=
+"DNSCacheHostStatus2"/> <xsd:enumeration value=
+"DNSNameServerStatus"/> <xsd:enumeration value=
+"DNSNameServerStatus2"/> <xsd:enumeration value=
+"DNSSearchDomainStatus"/> <xsd:enumeration value=
+"DNSStaticHostStatus"/> <xsd:enumeration value=
+"DocumentCachingSummary"/> <xsd:enumeration value=
+"DocumentStatus"/> <xsd:enumeration value=
+"DocumentStatusSimpleIndex"/> <xsd:enumeration value=
+"DomainCheckpointStatus"/> <xsd:enumeration value=
+"DomainStatus"/> <xsd:enumeration value=
+"DomainSummary"/> <xsd:enumeration value=
+"DynamicQueueManager"/> <xsd:enumeration value=
+"DynamicTibcoEMSStatus"/> <xsd:enumeration value=
+"EBMS2SourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"EnvironmentalFanSensors"/> <xsd:enumeration value=
+"EnvironmentalSensors"/> <xsd:enumeration value=
+"EthernetCountersStatus"/> <xsd:enumeration value=
+"EthernetInterfaceStatus"/> <xsd:enumeration value=
+"EthernetMAUStatus"/> <xsd:enumeration value=
+"EthernetMIIRegisterStatus"/> <xsd:enumeration value=
+"FailureNotificationStatus"/> <xsd:enumeration value=
+"FilePollerStatus"/> <xsd:enumeration value=
+"FilesystemStatus"/> <xsd:enumeration value=
+"FirmwareStatus"/> <xsd:enumeration value=
+"FirmwareVersion"/> <xsd:enumeration value=
+"FTPFilePollerSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"FTPServerSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"HSMKeyStatus"/> <xsd:enumeration value=
+"HTTPConnections"/> <xsd:enumeration value=
+"HTTPConnectionsCreated"/> <xsd:enumeration value=
+"HTTPConnectionsDestroyed"/> <xsd:enumeration value=
+"HTTPConnectionsOffered"/> <xsd:enumeration value=
+"HTTPConnectionsRequested"/> <xsd:enumeration value=
+"HTTPConnectionsReturned"/> <xsd:enumeration value=
+"HTTPConnectionsReused"/> <xsd:enumeration value=
+"HTTPMeanTransactionTime"/> <xsd:enumeration value=
+"HTTPMeanTransactionTime2"/> <xsd:enumeration value=
+"HTTPServiceSummary"/> <xsd:enumeration value=
+"HTTPSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"HTTPSSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"HTTPTransactions"/> <xsd:enumeration value=
+"HTTPTransactions2"/> <xsd:enumeration value=
+"IGMPStatus"/> <xsd:enumeration value=
+"IMSConnectSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"IMSConnectstatus"/> <xsd:enumeration value=
+"IPMISelEvents"/> <xsd:enumeration value=
+"IScsiHBAStatus"/> <xsd:enumeration value=
+"IScsiInitiatorStatus"/> <xsd:enumeration value=
+"IScsiTargetStatus"/> <xsd:enumeration value=
+"IScsiVolumeStatus"/> <xsd:enumeration value=
+"LibraryVersion"/> <xsd:enumeration value=
+"LicenseStatus"/> <xsd:enumeration value=
+"LLMPolicySummary"/> <xsd:enumeration value=
+"LLMSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"LoadBalancerStatus"/> <xsd:enumeration value=
+"LoadBalancerStatus2"/> <xsd:enumeration value=
+"LogTargetStatus"/> <xsd:enumeration value=
+"MemoryStatus"/> <xsd:enumeration value=
+"MessageCountFilters"/> <xsd:enumeration value=
+"MessageCounts"/> <xsd:enumeration value=
+"MessageDurationFilters"/> <xsd:enumeration value=
+"MessageDurations"/> <xsd:enumeration value=
+"MessageSources"/> <xsd:enumeration value=
+"MQQMstatus"/> <xsd:enumeration value=
+"MQSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"MQStatus"/> <xsd:enumeration value=
+"MultiProtocolGatewaySummary"/> <xsd:enumeration value=
+"NDCacheStatus"/> <xsd:enumeration value=
+"NetworkInterfaceStatus"/> <xsd:enumeration value=
+"NetworkReceiveDataThroughput"/> <xsd:enumeration value=
+"NetworkReceivePacketThroughput"/> <xsd:enumeration value=
+"NetworkTransmitDataThroughput"/> <xsd:enumeration value=
+"NetworkTransmitPacketThroughput"/> <xsd:enumeration value=
+"NFSFilePollerSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"NFSMountStatus"/> <xsd:enumeration value=
+"NTPRefreshStatus"/> <xsd:enumeration value=
+"ObjectStatus"/> <xsd:enumeration value=
+"OtherSensors"/> <xsd:enumeration value=
+"PCIBus"/> <xsd:enumeration value=
+"POPPollerSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"PortStatus"/> <xsd:enumeration value=
+"PowerSensors"/> <xsd:enumeration value=
+"RaidPartitionStatus"/> <xsd:enumeration value=
+"RaidPhysDiskStatus"/> <xsd:enumeration value=
+"RaidPhysDiskStatus2"/> <xsd:enumeration value=
+"RaidVolumeStatus"/> <xsd:enumeration value=
+"RaidVolumeStatus2"/> <xsd:enumeration value=
+"ReceiveKbpsThroughput"/> <xsd:enumeration value=
+"ReceivePacketThroughput"/> <xsd:enumeration value=
+"RoutingStatus"/> <xsd:enumeration value=
+"RoutingStatus2"/> <xsd:enumeration value=
+"SecureCloudConnectorConnectionsStatus"/> <xsd:enumeration value=
+"SelfBalancedStatus"/> <xsd:enumeration value=
+"SelfBalancedTable"/> <xsd:enumeration value=
+"ServicesMemoryStatus"/> <xsd:enumeration value=
+"ServicesStatus"/> <xsd:enumeration value=
+"SFTPFilePollerSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"SLMPeeringStatus"/> <xsd:enumeration value=
+"SLMSummaryStatus"/> <xsd:enumeration value=
+"SNMPStatus"/> <xsd:enumeration value=
+"SQLStatus"/> <xsd:enumeration value=
+"SSHKnownHostFileStatus"/> <xsd:enumeration value=
+"SSHKnownHostStatus"/> <xsd:enumeration value=
+"SSHServerSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"SSHTrustedHostStatus"/> <xsd:enumeration value=
+"SSLProxyServiceSummary"/> <xsd:enumeration value=
+"StandbyStatus"/> <xsd:enumeration value=
+"StatelessTCPSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"StylesheetCachingSummary"/> <xsd:enumeration value=
+"StylesheetExecutions"/> <xsd:enumeration value=
+"StylesheetExecutionsSimpleIndex"/> <xsd:enumeration value=
+"StylesheetMeanExecutionTime"/> <xsd:enumeration value=
+"StylesheetMeanExecutionTimeSimpleIndex"/> <xsd:enumeration value=
+"StylesheetProfiles"/> <xsd:enumeration value=
+"StylesheetProfilesSimpleIndex"/> <xsd:enumeration value=
+"StylesheetStatus"/> <xsd:enumeration value=
+"StylesheetStatusSimpleIndex"/> <xsd:enumeration value=
+"SystemUsage"/> <xsd:enumeration value=
+"SystemUsageTable"/> <xsd:enumeration value=
+"TCPProxyServiceSummary"/> <xsd:enumeration value=
+"TCPSummary"/> <xsd:enumeration value=
+"TCPTable"/> <xsd:enumeration value=
+"TemperatureSensors"/> <xsd:enumeration value=
+"TibcoEMSSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"TibcoEMSStatus"/> <xsd:enumeration value=
+"TransmitKbpsThroughput"/> <xsd:enumeration value=
+"TransmitPacketThroughput"/> <xsd:enumeration value=
+"TRVPolicySummary"/> <xsd:enumeration value=
+"TRVSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"UDDISubscriptionKeyStatusSimpleIndex"/> <xsd:enumeration value=
+"UDDISubscriptionServiceStatusSimpleIndex"/> <xsd:enumeration value=
+"UDDISubscriptionStatusSimpleIndex"/> <xsd:enumeration value=
+"Version"/> <xsd:enumeration value=
+"VlanInterfaceStatus"/> <xsd:enumeration value=
+"VoltageSensors"/> <xsd:enumeration value=
+"WebAppFwAccepted"/> <xsd:enumeration value=
+"WebAppFwRejected"/> <xsd:enumeration value=
+"WebAppFWSummary"/> <xsd:enumeration value=
+"WebSphereJMSSourceProtocolHandlerSummary"/> <xsd:enumeration value=
+"WebSphereJMSStatus"/> <xsd:enumeration value=
+"WSGatewaySummary"/> <xsd:enumeration value=
+"WSMAgentSpoolers"/> <xsd:enumeration value=
+"WSMAgentStatus"/> <xsd:enumeration value=
+"WSOperationMetrics"/> <xsd:enumeration value=
+"WSOperationMetricsSimpleIndex"/> <xsd:enumeration value=
+"WSOperationsStatus"/> <xsd:enumeration value=
+"WSOperationsStatusSimpleIndex"/> <xsd:enumeration value=
+"WSRRSavdSrchSubsPolicyAttachmentsStatus"/> <xsd:enumeration value=
+"WSRRSavedSearchSubscriptionServiceStatus"/> <xsd:enumeration value=
+"WSRRSavedSearchSubscriptionStatus"/> <xsd:enumeration value=
+"WSRRSubscriptionPolicyAttachmentsStatus"/> <xsd:enumeration value=
+"WSRRSubscriptionServiceStatus"/> <xsd:enumeration value=
+"WSRRSubscriptionStatus"/> <xsd:enumeration value=
+"WSWSDLStatus"/> <xsd:enumeration value=
+"WSWSDLStatusSimpleIndex"/> <xsd:enumeration value=
+"XMLFirewallServiceSummary"/> <xsd:enumeration value=
+"XMLNamesStatus"/> <xsd:enumeration value=
+"XSLCoprocServiceSummary"/> <xsd:enumeration value=
+"XSLProxyServiceSummary"/> <xsd:enumeration value=
+"XTCProtocolHandlerSummary"/> <xsd:enumeration value=
+"ZHybridTCSstatus"/> <xsd:enumeration value=
+"ZosNSSstatus"/> </xsd:restriction> </xsd:simpleType> ------------------------------------------------------------------------------- <xsd:simpleType xmlns:tns=
+"http://www.datapower.com/schemas/management" xmlns:xsd=
+"http://www.w3.org/2001/XMLSchema" name=
+"ActionEnum"> <xsd:restriction base=
+"xsd:string"> <xsd:enumeration value=
+"AddKnownHost"/> <xsd:enumeration value=
+"AddPasswordMap"/> <xsd:enumeration value=
+"AddSelTestEntry"/> <xsd:enumeration value=
+"AddTrustedHost"/> <xsd:enumeration value=
+"ApplyPatch"/> <xsd:enumeration value=
+"BackupConfig"/> <xsd:enumeration value=
+"BootDelete"/> <xsd:enumeration value=
+"BootSwitch"/> <xsd:enumeration value=
+"BootUpdate"/> <xsd:enumeration value=
+"CacheSchema"/> <xsd:enumeration value=
+"CacheStylesheet"/> <xsd:enumeration value=
+"CacheWSDL"/> <xsd:enumeration value=
+"ChangePassword"/> <xsd:enumeration value=
+"ClearSel"/> <xsd:enumeration value=
+"ConvertCertificate"/> <xsd:enumeration value=
+"ConvertKey"/> <xsd:enumeration value=
+"CreateDir"/> <xsd:enumeration value=
+"CreateTAMFiles"/> <xsd:enumeration value=
+"CryptoExport"/> <xsd:enumeration value=
+"CryptoImport"/> <xsd:enumeration value=
+"DeleteFile"/> <xsd:enumeration value=
+"DeleteHSMKey"/> <xsd:enumeration value=
+"DeleteKnownHost"/> <xsd:enumeration value=
+"DeleteKnownHostTable"/> <xsd:enumeration value=
+"DeletePasswordMap"/> <xsd:enumeration value=
+"DeleteTrustedHost"/> <xsd:enumeration value=
+"DeviceCertificate"/> <xsd:enumeration value=
+"Disconnect"/> <xsd:enumeration value=
+"DomainQuiesce"/> <xsd:enumeration value=
+"DomainUnquiesce"/> <xsd:enumeration value=
+"ErrorReport"/> <xsd:enumeration value=
+"ExecConfig"/> <xsd:enumeration value=
+"FetchFile"/> <xsd:enumeration value=
+"FileCapture"/> <xsd:enumeration value=
+"FlushAAACache"/> <xsd:enumeration value=
+"FlushArpCache"/> <xsd:enumeration value=
+"FlushDNSCache"/> <xsd:enumeration value=
+"FlushDocumentCache"/> <xsd:enumeration value=
+"FlushNDCache"/> <xsd:enumeration value=
+"FlushNSSCache"/> <xsd:enumeration value=
+"FlushPDPCache"/> <xsd:enumeration value=
+"FlushRBMCache"/> <xsd:enumeration value=
+"FlushStylesheetCache"/> <xsd:enumeration value=
+"HSMCloneKWK"/> <xsd:enumeration value=
+"HSMReInit"/> <xsd:enumeration value=
+"ImportExecute"/> <xsd:enumeration value=
+"InitFibreChannelFilesystem"/> <xsd:enumeration value=
+"InitializeCompactFlashFilesystem"/> <xsd:enumeration value=
+"InitializeRaidVolumeFilesystem"/> <xsd:enumeration value=
+"InitIScsiFilesystem"/> <xsd:enumeration value=
+"Keygen"/> <xsd:enumeration value=
+"LocateDevice"/> <xsd:enumeration value=
+"MoveFile"/> <xsd:enumeration value=
+"NoPasswordMap"/> <xsd:enumeration value=
+"PacketCapture"/> <xsd:enumeration value=
+"PacketCaptureDebug"/> <xsd:enumeration value=
+"PasswordMap"/> <xsd:enumeration value=
+"Ping"/> <xsd:enumeration value=
+"Quiesce"/> <xsd:enumeration value=
+"QuiesceDP"/> <xsd:enumeration value=
+"RaidActivate"/> <xsd:enumeration value=
+"RaidDelete"/> <xsd:enumeration value=
+"RaidInitialize"/> <xsd:enumeration value=
+"RaidRebuild"/> <xsd:enumeration value=
+"RefreshDocument"/> <xsd:enumeration value=
+"RefreshStylesheet"/> <xsd:enumeration value=
+"RefreshTAMCerts"/> <xsd:enumeration value=
+"RemoveCheckpoint"/> <xsd:enumeration value=
+"RemoveDir"/> <xsd:enumeration value=
+"RemoveStylesheet"/> <xsd:enumeration value=
+"RepairCompactFlashFilesystem"/> <xsd:enumeration value=
+"RepairFibreChannelFilesystem"/> <xsd:enumeration value=
+"RepairIScsiFilesystem"/> <xsd:enumeration value=
+"RepairRaidVolumeFilesystem"/> <xsd:enumeration value=
+"ResetDomain"/> <xsd:enumeration value=
+"ResetThisDomain"/> <xsd:enumeration value=
+"RestartDomain"/> <xsd:enumeration value=
+"RestartThisDomain"/> <xsd:enumeration value=
+"RollbackCheckpoint"/> <xsd:enumeration value=
+"SaveCheckpoint"/> <xsd:enumeration value=
+"SaveConfig"/> <xsd:enumeration value=
+"SaveInternalState"/> <xsd:enumeration value=
+"SecureBackup"/> <xsd:enumeration value=
+"SecureRestore"/> <xsd:enumeration value=
+"SelectConfig"/> <xsd:enumeration value=
+"SendErrorReport"/> <xsd:enumeration value=
+"SendFile"/> <xsd:enumeration value=
+"SendLogEvent"/> <xsd:enumeration value=
+"ServiceQuiesce"/> <xsd:enumeration value=
+"ServiceStatusQuiesce"/> <xsd:enumeration value=
+"ServiceStatusUnquiesce"/> <xsd:enumeration value=
+"ServiceUnquiesce"/> <xsd:enumeration value=
+"SetLogLevel"/> <xsd:enumeration value=
+"SetRBMDebugLog"/> <xsd:enumeration value=
+"SetSystemVar"/> <xsd:enumeration value=
+"SetTimeAndDate"/> <xsd:enumeration value=
+"Shutdown"/> <xsd:enumeration value=
+"StopPacketCapture"/> <xsd:enumeration value=
+"TCPConnectionTest"/> <xsd:enumeration value=
+"TestHardware"/> <xsd:enumeration value=
+"TestPasswordMap"/> <xsd:enumeration value=
+"TestRadius"/> <xsd:enumeration value=
+"TestURLMap"/> <xsd:enumeration value=
+"TestURLRefresh"/> <xsd:enumeration value=
+"TestURLRewrite"/> <xsd:enumeration value=
+"TestValidateSchema"/> <xsd:enumeration value=
+"UndoConfig"/> <xsd:enumeration value=
+"UniversalPacketCaptureDebug"/> <xsd:enumeration value=
+"UniversalStopPacketCapture"/> <xsd:enumeration value=
+"Unquiesce"/> <xsd:enumeration value=
+"UnquiesceDP"/> <xsd:enumeration value=
+"UpgradeWatchdog"/> <xsd:enumeration value=
+"UserForcePasswordChange"/> <xsd:enumeration value=
+"UserResetFailedLogin"/> <xsd:enumeration value=
+"UserResetPassword"/> <xsd:enumeration value=
+"ValCredAddCertsFromDir"/> <xsd:enumeration value=
+"VLANPacketCapture"/> <xsd:enumeration value=
+"VLANStopPacketCapture"/> <xsd:enumeration value=
+"WsrrSynchronize"/> </xsd:restriction> </xsd:simpleType> $

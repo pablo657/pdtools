@@ -1,0 +1,207 @@
+Echo off
+REM <-----   PARAMETROS ----->
+REM --	1 AMBIENTE
+REM --	2 Host
+REM <-----   PARAMETROS ----->
+SET PATH=%PATH%;C:\Program Files\Curl\;C:\Datapower_Code64\;C:\Datapower_DeployDesencriptador\
+set ambiente=%1%
+set hostReceived="false"
+set hostDP=10.76.60.18:5550
+
+if %2.==. (
+	set hostReceived="false"
+) else (
+	set hostDP=%2
+	set hostReceived="true"
+)
+
+Echo ______ Data Power ______
+Echo -- Desplegando sobre el dominio Data Power: %ambiente%
+
+if exist "c:\ComponentesInternet\Logs\DPAutomatization30.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization30.txt c:\ComponentesInternet\Logs\DPAutomatization31.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization29.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization29.txt c:\ComponentesInternet\Logs\DPAutomatization30.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization28.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization28.txt c:\ComponentesInternet\Logs\DPAutomatization29.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization27.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization27.txt c:\ComponentesInternet\Logs\DPAutomatization28.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization26.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization26.txt c:\ComponentesInternet\Logs\DPAutomatization27.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization25.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization25.txt c:\ComponentesInternet\Logs\DPAutomatization26.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization24.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization24.txt c:\ComponentesInternet\Logs\DPAutomatization25.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization23.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization23.txt c:\ComponentesInternet\Logs\DPAutomatization24.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization22.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization22.txt c:\ComponentesInternet\Logs\DPAutomatization23.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization21.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization21.txt c:\ComponentesInternet\Logs\DPAutomatization22.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization20.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization20.txt c:\ComponentesInternet\Logs\DPAutomatization21.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization19.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization19.txt c:\ComponentesInternet\Logs\DPAutomatization20.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization18.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization18.txt c:\ComponentesInternet\Logs\DPAutomatization19.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization17.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization17.txt c:\ComponentesInternet\Logs\DPAutomatization18.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization16.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization16.txt c:\ComponentesInternet\Logs\DPAutomatization17.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization15.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization15.txt c:\ComponentesInternet\Logs\DPAutomatization16.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization14.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization14.txt c:\ComponentesInternet\Logs\DPAutomatization15.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization13.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization13.txt c:\ComponentesInternet\Logs\DPAutomatization14.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization12.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization12.txt c:\ComponentesInternet\Logs\DPAutomatization13.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization11.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization11.txt c:\ComponentesInternet\Logs\DPAutomatization12.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization10.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization10.txt c:\ComponentesInternet\Logs\DPAutomatization11.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization09.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization09.txt c:\ComponentesInternet\Logs\DPAutomatization10.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization08.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization08.txt c:\ComponentesInternet\Logs\DPAutomatization09.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization07.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization07.txt c:\ComponentesInternet\Logs\DPAutomatization08.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization06.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization06.txt c:\ComponentesInternet\Logs\DPAutomatization07.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization05.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization05.txt c:\ComponentesInternet\Logs\DPAutomatization06.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization04.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization04.txt c:\ComponentesInternet\Logs\DPAutomatization05.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization03.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization03.txt c:\ComponentesInternet\Logs\DPAutomatization04.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization02.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization02.txt c:\ComponentesInternet\Logs\DPAutomatization03.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization01.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization01.txt c:\ComponentesInternet\Logs\DPAutomatization02.txt
+)
+if exist "c:\ComponentesInternet\Logs\DPAutomatization.txt" (
+	ren c:\ComponentesInternet\Logs\DPAutomatization.txt c:\ComponentesInternet\Logs\DPAutomatization01.txt
+)
+if not exist "c:\ComponentesInternet\Logs\DPAutomatization.txt" (
+	echo DataPower Automatization Deployer >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+)
+
+if %hostReceived%=="false" (
+	echo No recibo Host desde Release Automation, procedo a buscarlo en el batch >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+	goto SearchHostInBatch
+) else (
+	echo Recibo Host desde Release Automation >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+	goto ExecuteTasks
+)
+
+:SearchHostInBatch
+if not x%ambiente:DESA=%==x%ambiente% (
+	set hostDP=10.76.60.18:5550
+	goto ExecuteTasks
+)
+
+if not x%ambiente:TESTING=%==x%ambiente% (
+	set hostDP=10.76.60.17:5550
+	goto ExecuteTasks
+)
+
+if not x%ambiente:UAT=%==x%ambiente% (
+	set hostDP=10.76.60.25:5550
+	goto ExecuteTasks
+)
+
+if not x%ambiente:PRODUCCION=%==x%ambiente% (
+	set hostDP=10.249.15.44:5550;10.249.15.43:5550;10.249.15.123:5550;10.71.100.167:5550;10.71.100.169:5550
+	goto ExecuteTasks
+)
+echo Error al identificar ambiente. Se finaliza ejecucion >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+goto borrarYSalirERROR
+
+:ExecuteTasks
+Echo -- Host:Puerto: %hostDP%
+echo "******************************************" >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+
+if exist apiProxyConfigRQ del apiProxyConfigRQ > nul
+if exist politicasAccesoRQ del politicasAccesoRQ > nul
+if exist apiProxyConfigRSP.xml del apiProxyConfigRSP.xml > nul
+if exist politicasAccesoRSP.xml del politicasAccesoRSP.xml > nul
+
+echo Obteniendo usuario y contrasena
+echo "Obteniendo usuario y contraseña" >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+
+decript U %1% > UserTemp.txt
+set /p UserDeploy=<UserTemp.txt
+
+decript P %1% > PassTemp.txt
+set /p PassDeploy=<PassTemp.txt
+
+set indexArray=0
+set erroresCount=0
+
+for %%B in (%hostDP%) do (
+	set Array[!indexArray!] = %%B
+	set errServer=0
+
+	cd .\%ambiente%
+	Base64.exe /e ./API-Proxy-Config.xsl ./API-Proxy-ConfigENCODED.txt
+
+	echo "******************************************" >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+	echo Inicio del despliegue del servicio en el nodo "%%B" >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+	start /wait C:\Datapower_RADeployScript\DeployHostFile.bat %ambiente% %%B
+	set /a erroresCount += errServer
+	echo Termina el despliegue del servicio en el nodo "%%B" >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+	echo "******************************************" >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+	set /a index += 1
+)
+
+if "%ErroresCount%" == "0" (
+	goto borrarYSalirOK
+) else (
+	goto borrarYSalirERROR
+)
+
+
+:borrarYSalirOK
+if exist UserTemp.txt del UserTemp.txt > nul
+if exist PassTemp.txt del PassTemp.txt > nul
+echo "Se finaliza el despliegue sin errores." >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+echo "******************************************" >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+echo "******************************************" >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+Exit /B 0
+
+:borrarYSalirERROR
+if exist UserTemp.txt del UserTemp.txt > nul
+if exist PassTemp.txt del PassTemp.txt > nul
+echo "Se finaliza el despliegue con errores, verificar logs" >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+echo "******************************************" >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+echo "******************************************" >> c:\ComponentesInternet\Logs\DPAutomatization.txt
+Exit /B 400

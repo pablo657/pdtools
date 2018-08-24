@@ -1,0 +1,108 @@
+﻿@model List<DPCoreTools.SeedWork.Models.XmlFirewall>
+<style>
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.no-data {
+		color: rgba(128,128,128,1);
+		font-size: .9em;
+	}
+</style>
+<div style="width: 100%; position: relative;">
+	@if (Model.Any())
+	{
+		<div style="position: relative; height: 2.5em; font-size: .9em;">
+			<span style="position: absolute; right: 1em; top: 5px;">
+				<small>Total : <strong>@Model.Count</strong></small>
+			</span>
+		</div>
+		<table class="DPCore-table">
+			<thead>
+				<tr>
+					<th>
+						Name
+					</th>
+					<th>
+						Op-State
+					</th>
+					<th>
+						Request-Type
+					</th>
+					<th>
+						Local Address
+					</th>
+					<th>
+						Port
+					</th>
+					<th>
+						Response-Type
+					</th>
+					<th>
+						Probe
+					</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.Name)
+						</td>
+						<td>
+							@if (item.OpState.Status.ToLower() == "up")
+							{
+								<i class="fa fa-arrow-circle-up" style="color: green"></i>
+							}
+							else if (item.OpState.Status.ToLower() == "down")
+							{
+								<i class="fa fa-arrow-circle-down" style="color:red"></i>
+							}
+							else
+							{
+								<i class="fa fa-info-circle" style="color:yellow">No available</i>
+							}
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.RequestType)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.LocalAddress)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.LocalPort)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.ResponseType)
+						</td>
+						<td class="td-action">
+							@if (item.Probe == "off")
+							{
+								@*<a asp-action="EnableProbe" asp-controller="MultiProtocolGatewayService" asp-route-id="@item.Name" asp-route-Environment="@item.Environment" asp-route-Host="@item.Host" asp-route-Domain="@item.Domain">*@
+								<i class="fa fa-toggle-off"></i>
+								@*</a>*@
+							}
+							else
+							{
+								@*<a asp-action="DisableProbe" asp-controller="MultiProtocolGatewayService" asp-route-id="@item.Name" asp-route-Environment="@item.Environment" asp-route-Host="@item.Host" asp-route-Domain="@item.Domain">*@
+								<i class="fa fa-toggle-on" style="color:green"></i> @Html.DisplayFor(modelItem => item.Probe)
+								@*</a>*@
+							}
+						</td>
+						<td class="td-action">
+							<a asp-action="Details" asp-controller="XmlFirewall" asp-route-id="@item.Name" asp-route-Environment="@item.Environment" asp-route-Host="@item.Host" asp-route-Domain="@item.Domain"><i class="fas fa-search"></i></a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	}
+	else
+	{
+		<p class="no-data" style="margin: 0; padding: 1em;">No existen registros en el dominio seleccionado</p>
+	}
+</div>

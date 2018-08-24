@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><amp:GetDomainListResponse xmlns:amp="http://www.datapower.com/schemas/appliance/management/1.0"><amp:Domain>default</amp:Domain><amp:Domain>DESARROLLO</amp:Domain><amp:Domain>DESARROLLO_WEB_PUB</amp:Domain><amp:Domain>DESARROLLO_XI50</amp:Domain><amp:Domain>PRE_DESA</amp:Domain></amp:GetDomainListResponse></env:Body></env:Envelope>

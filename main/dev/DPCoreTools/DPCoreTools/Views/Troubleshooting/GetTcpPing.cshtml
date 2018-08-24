@@ -1,0 +1,159 @@
+﻿@{
+	ViewData["Title"] = "Realizar Ping";
+}
+
+
+<img src="~/images/troubleshoot.gif" /><h2>Realizar TCP Ping</h2>
+
+@HtmlHelperPartialExtensions.Partial(Html, "_DPComplete")
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<label class="control-label">Destino</label>
+			<input type="text" id="Uri" class="form-control" placeholder="Ej: salesforce.com" />
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			<label class="control-label">Puerto</label>
+			<input type="text" id="Port" class="form-control" placeholder="Ej: 443" />
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group" id="dvResult">
+			<label id="resultCommand" class="alert" role="alert"></label>
+		</div>
+	</div>
+</div>
+<div class="modal-Ajax" style="display: none">
+	<div class="center">
+		<img alt="" src="~/images/gif/loading.gif" />
+	</div>
+</div>
+<footer class="DPCore-footer-main">
+	<a asp-action="Index" asp-controller="Home"><i class="fas fa-caret-left"></i> Volver</a>
+	<button id="btnSave" class="DPCore-button" style="position: absolute; right: 1em; top: -5px;"><i class="fas fa-check"></i> Ejecutar</button>
+</footer>
+
+@section Scripts {
+	<script>
+		(function() {
+			var $container = {
+				btnConfirm: $('#btnSave'), section: {
+					btnNew: $('.btnAddItem', '[data-control-container]')
+				}
+			}
+
+			var sel1 = $('#drpEnvironments'), sel2 = $('#drpHosts'), sel3 = $('#drpDomains');
+			sel1.on('change', function() {
+				var valSelected = $(this).find('option:selected').text();
+				var ajax = {
+					url: '@Url.Action("GetHostsList", "Base")',
+					data: { pEnvironment: valSelected }
+				}
+				$.ajax({
+					url: ajax.url,
+					type: "POST",
+					data: ajax.data,
+					dataType: "json",
+					success: function(result) {
+						sel2.empty();
+						sel3.empty();
+						$.each(result, function(i, v) {
+							sel2.append($('<option />', {
+								value: i,
+								text: v
+							}));
+						});
+					},
+					error: function(xhr, ajaxOptions, thrownError) {
+						ALERT.SHOW_ERROR(PROP.MGE.ERROR_COMMAND_FAIL);
+					},
+					complete: function() {
+					}
+				});
+			});
+
+			sel2.on('change', function() {
+				var dp = {
+					Environment: $('#drpEnvironments').find('option:selected').text(),
+					Host: $('#drpHosts').find('option:selected').text()
+				}
+				var ajax = {
+					url: '@Url.Action("GetDomains", "Domain")',
+					data: { model: dp },
+						beforeSend: function () {
+						$(".modal-Ajax").show();
+					}
+				}
+				$.ajax({
+					url: ajax.url,
+					type: "POST",
+					data: ajax.data,
+					dataType: "json",
+					success: function(result) {
+						sel3.empty();
+						$.each(result.entity, function(i, v) {
+							sel3.append($('<option />', {
+								value: i,
+								text: v.name
+							}));
+						});
+					},
+					error: function(xhr, ajaxOptions, thrownError) {
+						ALERT.SHOW_ERROR(PROP.MGE.ERROR_COMMAND_FAIL);
+					},
+					complete: function() {
+						$(".modal-Ajax").hide();
+					}
+				});
+			});
+
+			function executeTcpPing() {
+				var model = {
+					Environment: $('#drpEnvironments').find('option:selected').text(),
+					Host: $('#drpHosts').find('option:selected').text(),
+					Domain: $('#drpDomains').find('option:selected').text(),
+					Uri: $('#Uri').val(),
+					Port: $('#Port').val()
+				}
+				if (!model.Environment.trim() || !model.Host.trim() || !model.Domain.trim() || !model.Uri.trim() || !model.Port.trim()) {
+					ALERT.SHOW_WARNING(PROP.MGE.ERROR_REQUIRED, 2000);
+					return;
+				}
+				$('#resultCommand').html('');
+				$.ajax({
+					url: '@Url.Action("GetTcpPing", "Troubleshooting")',
+					type: "POST",
+					data: model,
+					beforeSend: function () {
+						$(".modal-Ajax").show();
+					},
+					dataType: "json",
+					success: function (resu) {
+						if (resu.code == 0) {
+							$('#resultCommand').removeClass("alert-danger");
+							$('#resultCommand').addClass("alert-success");
+						} else {
+							$('#resultCommand').removeClass("alert-success");
+							$('#resultCommand').addClass("alert-danger");
+						}
+						$('#resultCommand').html(resu.message);
+					},
+					error: function(xhr, ajaxOptions, thrownError) {
+						ALERT.SHOW_ERROR(PROP.MGE.ERROR_COMMAND_FAIL);
+					},
+					complete: function() {
+						$(".modal-Ajax").hide();
+					}
+				});
+			};
+
+			window.onload = function() {
+				$container.btnConfirm.on('click', executeTcpPing);
+			}
+		})();
+	</script>
+}

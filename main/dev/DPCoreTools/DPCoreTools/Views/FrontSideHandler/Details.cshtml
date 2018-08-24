@@ -1,0 +1,319 @@
+﻿@model DPCoreTools.SeedWork.Models.FrontSideHandler
+<header class="DPCore-header-main">
+	<h2 style="padding: .5em 0;">@Html.DisplayFor(model => model.Name)</h2>
+</header>
+<div data-control-container="Handler">
+	<section class="DPCore-section-main">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>Ambiente:</b>
+					@Html.DisplayFor(model => model.Environment)
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>Host:</b>
+					@Html.DisplayFor(model => model.Host)
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>Dominio:</b>
+					@Html.DisplayFor(model => model.Domain)
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>Status:</b>
+					@if (Model.OpState.Status.ToLower() == "up")
+					{
+						<i class="fa fa-arrow-circle-up" style="color: green"></i>
+					}
+					else if (Model.OpState.Status.ToLower() == "down")
+					{
+						<i class="fa fa-arrow-circle-down" style="color:red"></i>
+					}
+					else
+					{
+						<i class="fa fa-info-circle" style="color:yellow">No available</i>
+					}
+				</div>
+				<div class="form-group">
+					@Html.DisplayFor(model => model.OpState.Status)
+					@if (Model.OpState.Status.ToLower() != "up")
+					{
+						<i id="imgOpStatus" class="fa fa-search-plus" data-toggle="modal" data-target="#dvOpStatus" style="color:brown"></i>
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="DPCore-section-main">
+		<h5>General Configuration</h5>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>Admin State:</b>
+				</div>
+				<div class="form-group">
+					@Html.DisplayFor(model => model.AdminState)
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>Local IP address:</b>
+				</div>
+				<div class="form-group">
+					@Html.DisplayFor(model => model.LocalAddress)<i id="imgOpStatus" class="fa fa-search-plus" data-toggle="modal" data-target="#dvIpAddress" style="color:green"></i>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>Port:</b>
+				</div>
+				<div class="form-group">
+					@Html.DisplayFor(model => model.LocalPort)
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>HTTP version to client:</b>
+				</div>
+				<div class="form-group">
+					@Html.DisplayFor(model => model.HTTPVersion)
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>Enable compression:</b>
+				</div>
+				<div class="form-group">
+					@Html.DisplayFor(model => model.AllowCompression)
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>Maximum URL length:</b>
+				</div>
+				<div class="form-group">
+					@Html.DisplayFor(model => model.MaxURLLen)
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>Access control list:</b>
+				</div>
+				<div class="form-group">
+					@Html.DisplayFor(model => model.AccessControlList)
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>SSL server type:</b>
+				</div>
+				<div class="form-group">
+					@Html.DisplayFor(model => model.SSLServerConfigType)
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>SSL server profile:</b>
+				</div>
+				<div class="form-group">
+					@Html.DisplayFor(model => model.SSLServerProfile)
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="DPCore-section-main">
+		<h5>Allowed methods and versions</h5>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>HTTP 1.0:</b>
+				</div>
+				<div class="form-group">
+					@foreach (var item in Model.AllowedFeatures)
+					{
+						@Html.DisplayFor(model => item.Http_10)
+					}
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>HTTP 1.1:</b>
+				</div>
+				<div class="form-group">
+					@foreach (var item in Model.AllowedFeatures)
+					{
+						@Html.DisplayFor(model => item.Http_10)
+					}
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>HTTP/2:</b>
+				</div>
+				<div class="form-group">
+					@foreach (var item in Model.AllowedFeatures)
+					{
+						@Html.DisplayFor(model => item.Http_20)
+					}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>POST method:</b>
+				</div>
+				<div class="form-group">
+					@foreach (var item in Model.AllowedFeatures)
+					{
+						@Html.DisplayFor(model => item.Post)
+					}
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>GET method:</b>
+				</div>
+				<div class="form-group">
+					@foreach (var item in Model.AllowedFeatures)
+					{
+						@Html.DisplayFor(model => item.Get)
+					}
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>PUT method:</b>
+				</div>
+				<div class="form-group">
+					@foreach (var item in Model.AllowedFeatures)
+					{
+						@Html.DisplayFor(model => item.Put)
+					}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>HEAD method:</b>
+				</div>
+				<div class="form-group">
+					@foreach (var item in Model.AllowedFeatures)
+					{
+						@Html.DisplayFor(model => item.Head)
+					}
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>OPTIONS:</b>
+				</div>
+				<div class="form-group">
+					@foreach (var item in Model.AllowedFeatures)
+					{
+						@Html.DisplayFor(model => item.Options)
+					}
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>TRACE method:</b>
+				</div>
+				<div class="form-group">
+					@foreach (var item in Model.AllowedFeatures)
+					{
+						@Html.DisplayFor(model => item.Trace)
+					}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>DELETE method:</b>
+				</div>
+				<div class="form-group">
+					@foreach (var item in Model.AllowedFeatures)
+					{
+						@Html.DisplayFor(model => item.Delete)
+					}
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>URL with cmd.exe:</b>
+				</div>
+				<div class="form-group">
+					@foreach (var item in Model.AllowedFeatures)
+					{
+						@Html.DisplayFor(model => item.CmdExe)
+					}
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<b>Connect:</b>
+				</div>
+				<div class="form-group">
+					@foreach (var item in Model.AllowedFeatures)
+					{
+						@Html.DisplayFor(model => item.Connect)
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer class="DPCore-footer-main">
+		<a href="javascript:history.back();"><i class="fas fa-caret-left"></i> Volver</a>
+	</footer>
+</div>
+<div id="dvloading" class="modal-Ajax" style="display: none">
+	<div class="center">
+		<img alt="" src="~/images/gif/loading.gif" />
+	</div>
+</div>
+<div class="modal fade" id="dvOpStatus" tabindex="-1" role="dialog" aria-labelledby="lblOpStatus" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="lblOpStatus"><i class="fa fa-info-circle" style="color: orangered"></i> - Detalle Estado:</h4>
+				<button type="button" class="close" data-dismiss="modal" data-backdrop="false" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				@HtmlHelperPartialExtensions.Partial(Html, "_OpStatus", Model.OpState)
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="btnCloseModal" class="btn btn-secondary" data-backdrop="false" data-dismiss="modal">Cerrar</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="dvIpAddress" tabindex="-1" role="dialog" aria-labelledby="lblIpAddress" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="lblIpAddress"><i class="fa fa-info-circle" style="color: blue"></i> - Detalle Local Address:</h4>
+				<button type="button" class="close" data-dismiss="modal" data-backdrop="false" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				@HtmlHelperPartialExtensions.Partial(Html, "_LocalAddressIP", Model.Dns)
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="btnCloseModal" class="btn btn-secondary" data-backdrop="false" data-dismiss="modal">Cerrar</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

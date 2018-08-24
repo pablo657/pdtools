@@ -1,0 +1,151 @@
+﻿@using DPCoreTools.UI.Extensions
+<div data-control-container="MpgsSearch">
+    <header class="DPCore-header-main">
+        <h2 style="padding: .5em 0;">Listar MultiProtocolGatewayService de un Dominio</h2>
+    </header>
+    <section class="DPCore-section-main">
+        <header>
+            <h4>Filtro de búsqueda</h4>
+        </header>
+        <div>
+            @HtmlHelperPartialExtensions.Partial(Html, "_DPComplete")           
+            <br />
+            <div class="buttons-right">
+                <input type="button" id="btnSearch" value="Buscar" class="DPCore-button" />
+            </div>
+        </div>
+    </section>
+</div>
+<div class="modal-Ajax" style="display: none">
+    <div class="center">
+        <img alt="" src="~/images/gif/loading.gif" />
+    </div>
+</div>
+<hr />
+<div data-control-container="MpgsResultGrid">
+    <section class="DPCore-section-main">
+        <header>
+            <h4>Resultado</h4>
+        </header>
+        <div>
+        </div>
+    </section>
+</div>
+<footer class="DPCore-footer-main">
+    <a asp-action="Index" asp-controller="Home"><i class="fas fa-caret-left"></i> Volver</a>
+</footer>
+
+@section Scripts {
+    <script>
+		(function () {
+			var $containerSearch = $('[data-control-container="MpgsSearch"]');
+			var $btnSearch = $('#btnSearch', $containerSearch);
+
+			var sel1 = $('#drpEnvironments'), sel2 = $('#drpHosts'), sel3 = $('#drpDomains');
+			sel1.on('change', function() {
+				var valSelected = $(this).find('option:selected').text();
+				var ajax = {
+					url: '@Url.Action("GetHostsList", "Base")',
+					data: { pEnvironment: valSelected }
+				}
+				$.ajax({
+					url: ajax.url,
+					type: "POST",
+					data: ajax.data,
+					dataType: "json",
+					success: function(result) {
+						sel2.empty();
+						sel3.empty();
+						$.each(result, function(i, v) {
+							sel2.append($('<option />', {
+								value: i,
+								text: v
+							}));
+						});
+					},
+					error: function(xhr, ajaxOptions, thrownError) {
+						console.log('ERR', xhr.status, thrownError);
+						ALERT.SHOW_ERROR(PROP.MGE.ERROR_COMMAND_FAIL);
+					},
+					complete: function() {
+					}
+				});
+			});
+
+			sel2.on('change', function() {
+				var dp = {
+					Environment: $('#drpEnvironments').find('option:selected').text(),
+					Host: $('#drpHosts').find('option:selected').text()
+				}
+				var ajax = {
+					url: '@Url.Action("GetDomains", "Domain")',
+					data: { model: dp },
+					beforeSend: function () {
+						$(".modal-Ajax").show();
+					}
+				}
+				$.ajax({
+					url: ajax.url,
+					type: "POST",
+					data: ajax.data,
+					dataType: "json",
+					success: function(result) {
+						sel3.empty();
+						$.each(result.entity, function(i, v) {
+							sel3.append($('<option />', {
+								value: i,
+								text: v.name
+							}));
+						});
+					},
+					error: function(xhr, ajaxOptions, thrownError) {
+						console.log('ERR', xhr.status, thrownError);
+						ALERT.SHOW_ERROR(PROP.MGE.ERROR_COMMAND_FAIL);
+					},
+					complete: function() {
+						$(".modal-Ajax").hide();
+					}
+				});
+			});
+
+			function clickSearch() {
+				var $containerResult = $('[data-control-container="MpgsResultGrid"]');
+				var $containerSearch = $('[data-control-container="MpgsSearch"]');
+
+				var model = {
+					Environment: $containerSearch.find('#drpEnvironments > option:selected').text(),
+					Host: $containerSearch.find('#drpHosts > option:selected').text(),
+					Domain: $containerSearch.find('#drpDomains > option:selected').text()
+				}
+				$.ajax({
+					url: '@Url.Action("GetGetMultiProtocolGatewayServicesList", "MultiProtocolGatewayService")',
+					type: "POST",
+					data: model,
+					beforeSend: function () {
+						$(".modal-Ajax").show();
+					},
+					success: function (resu) {
+						console.log(' -> ', resu);
+						console.groupEnd();
+						$containerResult.find('> section > div').html(resu);
+						if ($('[data-control-container="MpgsResultGrid"]').find('.DPCore-table').length > 0) {
+							$('.DPCore-section-main > div', '[data-control-container="MpgsSearch"]').slideUp();
+						}
+					},
+					error: function(xhr, ajaxOptions, thrownError) {
+						console.log('ERR', xhr.status, thrownError);
+						ALERT.SHOW_ERROR(PROP.MGE.ERROR_COMMAND_FAIL);
+					},
+					complete: function() {
+						$(".modal-Ajax").hide();
+					}
+				});
+			};
+
+			$btnSearch.on('click', function () { clickSearch(); });
+			$('.DPCore-section-main > header', '[data-control-container="MpgsSearch"]').on('click', function () {
+				$(this).next().slideToggle();
+			});
+		})();
+    </script>
+}

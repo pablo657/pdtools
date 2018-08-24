@@ -1,0 +1,46 @@
+﻿<div id="wrapper">
+	<!-- Sidebar -->
+	<div id="sidebar-wrapper">
+		<ul class="sidebar-nav">
+			<li>
+				<a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+			</li>
+			<li>
+				<a href="#domainSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Dominios</a>
+				<ul class="collapse list-unstyled" id="domainSubmenu">
+					<li><a asp-area="" asp-controller="Domain" asp-action="Index">Obtener Dominios</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#mpgsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Multi-Protocol Gateway Service</a>
+				<ul class="collapse list-unstyled" id="mpgsSubmenu">
+					<li><a asp-area="" asp-controller="MultiProtocolGatewayService" asp-action="Index">Listar por dominio</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#fshSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Front Side Handlers</a>
+				<ul class="collapse list-unstyled" id="fshSubmenu">
+					<li><a asp-area="" asp-controller="FrontSideHandler" asp-action="Index">Listar por dominio</a></li>
+
+				</ul>
+			</li>
+			<li>
+				<a href="#xmlFSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">XML Firewalls</a>
+				<ul class="collapse list-unstyled" id="xmlFSubmenu">
+					<li><a asp-area="" asp-controller="XmlFirewall" asp-action="Index">Listar por dominio</a></li>
+
+				</ul>
+			</li>
+
+			<li>
+				<a href="#troubleshootingSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Troubleshooting</a>
+				<ul class="collapse list-unstyled" id="troubleshootingSubmenu">
+					<li><a asp-area="" asp-controller="Troubleshooting" asp-action="GetPing">Ping</a></li>
+					<li><a asp-area="" asp-controller="Troubleshooting" asp-action="GetTcpPing">TCP Ping</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- /#sidebar-wrapper -->
+</div>
+<!-- /#wrapper -->

@@ -1,0 +1,10 @@
+﻿@using DPCoreTools.UI.Extensions
+
+@HtmlHelperPartialExtensions.Partial(Html, "_DPMini")
+<div id="dvDpDomain" class="row">
+	<div class="col-md-6">
+		<label class="control-label">Dominio</label>
+		@Controles.RenderDropDown(Html, "drpDomains", "Domain", ViewBag.Domains,
+			new Dictionary<string, object> { { "class", "form-control" }, { "data-validation-name", "Domains" }})
+	</div>
+</div>
